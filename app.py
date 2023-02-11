@@ -127,7 +127,7 @@ def putRequest():
     req_data = request.get_json()
     availability = req_data['available']
     title = req_data['title']
-    the_id = req_data['id']
+    the_id = int(req_data['id'])
     print(the_id)
     bks = [b.serialize() for b in db.view()]
     for b in bks:
