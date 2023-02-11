@@ -19,6 +19,10 @@ if not os.path.isfile('books.db'):
 def index():
     return render_template("index.html")
 
+@app.route("/menu")
+def menu():
+    return render_template("menu.html")
+
 def isValid(email):
     regex = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
     if re.fullmatch(regex, email):
@@ -124,6 +128,7 @@ def putRequest():
     availability = req_data['available']
     title = req_data['title']
     the_id = req_data['id']
+    print(the_id)
     bks = [b.serialize() for b in db.view()]
     for b in bks:
         if b['id'] == the_id:
